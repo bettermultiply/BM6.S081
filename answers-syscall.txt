@@ -1,0 +1,15 @@
+usertrap() called syscall
+
+We can easily find out that p->trapframe->a7 is 0x7 by typing p /x *p->trapframe
+or look the user/initcode.S and find "li a7, SYS_exec" and find SYS_exec is 0x7 in proc.h
+
+when use p /x $sstatus, it forms 0x200000022 and the eighth bit is 0 which indicates that now is in user mode.
+
+register a3 corresponds to the varialable num
+it is panic at 0x00000000800215a
+
+the kernel crash for we are leaning an illeagle adress.
+No, the address 0 didn't mapped in the kernel address space
+the scause code is 13 which means "Load Page Fault" so it exactly proves it.
+
+is initcode whose pid is 1
