@@ -91,3 +91,16 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+uint64
+sys_trace(int)
+{
+  //pass an int variable here
+  //should remember our argument in a new variable in the proc structure(proc.h)
+  int mask;
+  argint(0, &mask);
+
+  myproc()->mask = mask;
+  return 0;
+
+}
