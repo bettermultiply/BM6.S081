@@ -106,3 +106,4 @@ struct proc {
   char name[16];               // Process name (debugging)
   int mask;                    // Mask to point out which syscall to retrive
 };
+

@@ -68,7 +68,7 @@ testmem() {
   }
 
   sinfo(&info);
-    
+    //ddr is a user virtual address, pointing to a struct stat.
   if (info.freemem != n) {
     printf("FAIL: free mem %d (bytes) instead of %d\n", n, info.freemem);
     exit(1);
@@ -83,7 +83,6 @@ testcall() {
     printf("FAIL: sysinfo failed\n");
     exit(1);
   }
-
   if (sysinfo((struct sysinfo *) 0xeaeb0b5b00002f5e) !=  0xffffffffffffffff) {
     printf("FAIL: sysinfo succeeded with bad argument\n");
     exit(1);
