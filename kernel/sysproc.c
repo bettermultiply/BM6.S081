@@ -107,14 +107,13 @@ sys_trace(int)
 }
 
 uint64
-sys_sysinfo(struct sysinfo *info)
+sys_sysinfo()
 {
   uint64 addr;
 
   argaddr(0, &addr);
   struct proc *p = myproc();
   struct sysinfo sysinfo;
-
   int procnum = getprocnum();
   int freememory = getfreememory();
   sysinfo.nproc = procnum;
